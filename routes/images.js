@@ -4,10 +4,10 @@ const router = require('express').Router();
 const Jimp = require('jimp');
 const keywords = require('../models/keywords');
 
-
 // Search keyword ->images->compression->save
 
 router.post('/', (req, res)=>{
+   
     let searchTerm = req.body.search;
     const kwords = new keywords({
         keyword: searchTerm
@@ -29,22 +29,23 @@ router.post('/', (req, res)=>{
         }
     })
     .then(function(images){
-        images.forEach(function(image, index){
-            let url = image.url;
         
+        images.forEach(function(image, index){
+            
+            let url = image.url;
+            
+            
             //compression
-            Jimp.read(url, function(err, img){
-              if(err) throw err;
-              if(img){
+            Jimp.read(url,  function(err, img){
+
+                if(err) throw err;
+            if(img){  
                 img.resize(256, 256)
                   .quality(60)
                   .greyscale()
                   .write("public/images/"+searchTerm+index+".jpg");
-              }
-              else{
-                  
-              }
-           });
+                 }
+            });
         });
         res.redirect('/list');
  
