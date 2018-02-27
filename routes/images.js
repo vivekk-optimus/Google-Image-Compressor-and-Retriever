@@ -6,7 +6,7 @@ const keywords = require('../models/keywords');
 
 // Search keyword ->images->compression->save
 
-router.post('/', (req, res)=>{
+router.post('/', (req, res, next)=>{
    
     let searchTerm = req.body.search;
     const kwords = new keywords({
@@ -23,7 +23,7 @@ router.post('/', (req, res)=>{
     google.list({
         keyword: searchTerm,
         num: 15,
-        detail: false,
+        detail: true,
         nightmare: {
             show: false
         }
@@ -45,6 +45,7 @@ router.post('/', (req, res)=>{
                   .greyscale()
                   .write("public/images/"+searchTerm+index+".jpg");
                  }
+                 next();
             });
         });
         res.redirect('/list');
