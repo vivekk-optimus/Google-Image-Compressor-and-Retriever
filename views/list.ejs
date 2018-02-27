@@ -1,0 +1,16 @@
+<% include partials/header.ejs %>
+                <p class="lead">Click to see images of respective keywords</p>
+                <hr class="my-4">
+
+                <p class="lead">
+                
+                   <ul class="list">
+                      <% keywords.forEach(function(key){ %>
+                       <li> <a href='/keyword/<%= key %>'>  <%= key %> </a> </li>
+                        <% }); %>
+                   </ul>
+                </p>
+              </div>
+              <hr>
+              
+<% include partials/footer.ejs %>

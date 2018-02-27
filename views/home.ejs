@@ -1,0 +1,19 @@
+
+<% include partials/header.ejs %>
+
+                <p class="lead">Enter keywords below to add top 15 images from google</p>
+                <hr class="my-4">
+
+                <p class="lead">
+                   <form  action="/fetch" method="POST">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-lg" for="inputLarge">Keywords:</label>
+                        <input name="search" class="form-control form-control-lg" type="text" placeholder="Search from google" id="inputLarge">
+                      </div>  
+                    <input class="btn btn-primary bg-success pull-right btn-lg btn-block" type="submit" role="button" value="Add Images">
+                  </form>
+                </p>
+              </div>
+              <hr>
+            
+<% include partials/footer.ejs %>
