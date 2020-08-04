@@ -1,7 +1,5 @@
 # Google Image Compressor and Retriever
 
-ZILLION.io Task
-
 "Build a NodeJs Server side Web app containing 3 pages which would scrape images from google
 search and store it in your server:
 
